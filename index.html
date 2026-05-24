@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <header>
+        <div id="stars"></div>
+        <div class="navbar">
+            <img src="coffee logo.png" alt="">
+            <div class="center-nav">
+                <a href="">Home</a>
+                <a href="">Menu</a>
+                <a href="">About</a>
+                <a href="">shop</a>
+
+            </div>
+            <div class="social">
+                <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href=""><i class="fa-solid fa-cart-arrow-down"></i></a>
+                <a href=""><i class="fa-solid fa-house"></i></a>
+
+            </div>
+        </div>
+
+        <div class="text">
+            <h1>WHERE EVERY CUP <br>TELLS A STORY</h1>
+            <p>At our cafe, every sip unveils a new tale, inviting you to explore the rich flavors and aromas that make
+                each cup spacial.</p>
+            <a href="" class="btn">Order Now</a>
+            <a href="" class="btn">View more</a>
+        </div>
+
+        <div class="coffee">
+            <img src="2.png" alt="">
+            <img src="3.png" alt="">
+            <img src="4.png" alt="">
+            <img src="5.png" alt="">
+            <img src="6.png" alt="">
+            <img src="7.png" alt="">
+
+
+        </div>
+
+        <div class="coffee-toggle">
+            <img src="1.png" alt="" class="active">
+
+        </div>
+
+    </header>
+    <script>
+
+        const coffeeImages = document.querySelectorAll('.coffee img');
+        const toggleImages = document.querySelectorAll('.coffee-toggle img');
+        let currentIndex = 0;
+
+        toggleImages[currentIndex].classList.add('active');
+
+        coffeeImages.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                toggleImages.forEach(toggleImg => toggleImg.classList.remove('active'));
+                toggleImages[currentIndex].classList.add('active');
+                toggleImages[currentIndex].src = coffeeImages[index].src;
+                currentIndex = (currentIndex + 1) % toggleImages.length;
+            });
+        });
+
+        // create stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = `${Math.random() * windowWidth}px`;
+                star.style.top = `${Math.random() * windowHeight}px`;
+                starsContainer.appendChild(star);
+
+            }
+
+        }
+        window.addEventListener('load', createStars);
+
+
+
+    </script>
+
+</body>
+
+</html>
